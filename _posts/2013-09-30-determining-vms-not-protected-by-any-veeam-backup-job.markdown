@@ -2,7 +2,7 @@
 layout: post
 title:  "Determining VM’s not protected by any Veeam Backup Job"
 description: Determining VM’s not protected by any Veeam Backup Job
-permalink: /determining-vms-not-protected-by-any-veeam-backup-job
+permalink: /determining-vms-not-protected-by-any-veeam-backup-job/
 ---
 
 **You can skip to the script below if you’d like, but I recommend setting up a separate user and the following permissions if you plan to run it as a scheduled task.**

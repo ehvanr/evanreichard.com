@@ -2,7 +2,7 @@
 layout: post
 title:  "SSH Tunneling to Access Remote Services (ESXi and IPMI)"
 description: Accessing ESXi via the vSphere Client and IPMI over SSH Tunneling
-permalink: /ssh-tunneling-to-access-remote-services
+permalink: /ssh-tunneling-to-access-remote-services/
 ---
 
 Awhile back I built an ESXi server and because I’m up at school, I have to be able to do 99% of things 400 miles away.  Up until now, I’ve been establishing an SSH session with my router (ASUS RT-N16 running Tomato) and then from there, SSH-ing into my ESXi server where I can execute esxcli commands to power up my VPN server.

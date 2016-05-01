@@ -2,7 +2,7 @@
 layout: post
 title:  "Deploying an OVF Template From An Attached Datastore"
 description: Instructions on how to deploy an OVF template that resides on an attached datastore
-permalink: /deploy-ovf-from-attached-datastore
+permalink: /deploy-ovf-from-attached-datastore/
 ---
 
 The other day I ran into an issue trying to deploy a OVF from an attached datastore. I needed to do this because I was connected over VPN and didn't want to upload an OVF over the connection.

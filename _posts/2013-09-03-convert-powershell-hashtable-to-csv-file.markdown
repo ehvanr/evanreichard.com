@@ -2,7 +2,7 @@
 layout: post
 title:  "Convert PowerShell HashTable to CSV File"
 description: Convert a PowerShell HashTable to a CSV File
-permalink: /convert-powershell-hashtable-to-csv-file
+permalink: /convert-powershell-hashtable-to-csv-file/
 ---
 
 Unfortunately you can’t use the `Export-CSV` cmdlet to export a custom `HashTable` to a CSV file (Not directly) I found you could convert it to a `PSObject` which can be directly piped to `Export-CSV`.

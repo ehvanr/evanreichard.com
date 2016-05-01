@@ -2,7 +2,7 @@
 layout: post
 title:  "Exchange Management Shell Export vs Delete Date Discrepancy"
 description: New-MailboxExportRequest -ContentFilter and Search-Mailbox -SearchQuery date range is different between the two
-permalink: /exchange-management-shell-export-and-delete-discrepancy
+permalink: /exchange-management-shell-export-and-delete-discrepancy/
 ---
 
 I discovered something interesting the other day when I was trying to export an Exchange 2010 journaling mailbox to a PST file through the Exchange Management Shell. The `-ContentFilter` flag for the `New-MailboxExportRequest` cmdlet **does not** act the same as the `-SearchQuery` flag for the `Search-Mailbox` cmdlet.

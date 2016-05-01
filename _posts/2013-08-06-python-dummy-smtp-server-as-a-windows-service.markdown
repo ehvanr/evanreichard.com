@@ -2,7 +2,7 @@
 layout: post
 title:  "Python Dummy SMTP Server as a Windows Service"
 description: Debugging SMTP Windows Service writen in Python
-permalink: /python-dummy-smtp-server-as-a-windows-service
+permalink: /python-dummy-smtp-server-as-a-windows-service/
 ---
 
 The other day, for debugging purposes, I needed to deploy a dummy SMTP server that would receive, log and NOT send emails. There’s actually a cool little Python one-liner that does something similar to this:

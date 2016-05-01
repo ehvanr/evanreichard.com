@@ -7967,9 +7967,6 @@ p img {
     margin: 0 auto;
     max-width: 990px;
   }
-  #page-content #content {
-    float: left;
-  }
   #page-content aside {
     float: left;
     max-width: 250px;

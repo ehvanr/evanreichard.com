@@ -2,7 +2,7 @@
 layout: post
 title:  "Enable Nested Virtualization in ESXi Without the Web Client"
 description: Enable Nested Virtualization in ESXi Without the Web Client
-permalink: /enable-nested-virtualization-in-esxi-without-web-client
+permalink: /enable-nested-virtualization-in-esxi-without-web-client/
 ---
 
 **Note:** This information is outdated.  There is now a HTML5 Web Client for ESXi standalone. However, there are some bugs so this may still be applicable. [See here.][1]

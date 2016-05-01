@@ -2,7 +2,7 @@
 layout: post
 title:  "Right Click MD5 or SHA1 Checksum!?"
 description: Right click on the file to get the MD5 or SHA1 checksum
-permalink: /right-click-checksum
+permalink: /right-click-checksum/
 ---
 
 Wouldn’t it be nice to right click on a file and calculate the MD5 or SHA-1 checksum?  That’s what I wanted to do and this is how I did it!

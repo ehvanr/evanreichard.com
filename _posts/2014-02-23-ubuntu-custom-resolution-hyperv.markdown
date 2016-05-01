@@ -2,7 +2,7 @@
 layout: post
 title:  "Custom Resolution in Ubuntu 13.10 on Microsoft HyperV"
 description: Enable the ability to set a custom resolution in Ubuntu while running on HyperV
-permalink: /ubuntu-custom-resolution-hyperv
+permalink: /ubuntu-custom-resolution-hyperv/
 ---
 
 By default you're unable to set a custom resolution in Ubuntu 13.10 while running on HyperV.  This is how I set it up. 

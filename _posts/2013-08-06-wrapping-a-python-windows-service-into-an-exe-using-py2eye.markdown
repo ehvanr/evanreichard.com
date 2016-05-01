@@ -2,7 +2,7 @@
 layout: post
 title:  "Wrapping a Python Windows Service into an EXE Using py2exe"
 description: Convert a python windows service into on self containing exe.
-permalink: /wrapping-a-python-windows-service-into-an-exe-using-py2exe
+permalink: /wrapping-a-python-windows-service-into-an-exe-using-py2exe/
 ---
 
 [After writing a debugging / dev SMTP server as a Windows Service in Python using pywin32][1], I decided to figure out how to wrap the Python Windows Service into an EXE so you wouldn’t have to install Python to get it running.

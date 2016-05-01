@@ -2,7 +2,7 @@
 layout: post
 title:  "ESXi Server with unRAID"
 description: My home server build with ESXi and unRAID
-permalink: /esxi-and-unraid
+permalink: /esxi-and-unraid/
 ---
 
 Back in 2011 I decided to go ahead and build my first computer.  My first computer that I built was not a desktop, but a server that would run ESXi.  I had planned to run unRAID, a non-standard software RAID solution as one of the VM’s with a SAS RAID Controller in I/O Passthrough.  As well as a few other VM’s as a test lab to learn :smile:
