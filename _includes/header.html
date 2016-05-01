@@ -1,0 +1,48 @@
+<header id="site-header">
+
+  <div id="avatar-container">
+
+    <a href="/">
+      <img id="author-picture" src="{{ site.author.picture }}" class="img-rounded"/>
+    </a>
+
+    <p id="author-name">{{ site.author.name }}</p>
+
+    <nav>
+
+      <ul id="nav" class="list-inline hidden-md hidden-lg">
+        <li><a href="/">Posts</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/resume">Résumé</a></li>
+        <li><a href="/webdev">Web Dev</a></li>
+        <hr>
+        <li><a href="//github.com/{{ site.github_username }}" target="_blank">GitHub</a></li>
+        <li><a href="//www.linkedin.com/in/{{ site.linkedin }}" target="_blank">LinkedIn</a></li>
+      </ul>
+
+    </nav>
+    <!-- responsive menu -->
+
+  </div>
+  <!-- avatar -->
+
+  <div id="nav-container" class="visible-md-block visible-lg-block">
+
+        <hr><br>
+    <nav>
+
+      <ul class="list-unstyled">
+        <li><a href="/">Posts</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/resume">Résumé</a></li>
+        <li><a href="/webdev">Web Dev</a></li>
+        <br><hr><br>
+        <li><a href="//github.com/{{ site.github_username }}" target="_blank">GitHub</a></li>
+        <li><a href="//www.linkedin.com/in/{{ site.linkedin }}" target="_blank">LinkedIn</a></li>
+      </ul>
+
+    </nav>
+
+  </div>
+  <!-- menu -->
+</header>

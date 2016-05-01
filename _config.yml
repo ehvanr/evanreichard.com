@@ -1,0 +1,55 @@
+# your informations
+author:
+  name: Evan Reichard
+  picture: /assets/images/avatar.jpg
+
+# site description
+description: Sysadmin, Security, Programming
+
+# site url
+url: https://www.evanreichard.com/
+
+# site title
+title: Evan Reichard
+
+# site version
+version: 1.0.0
+
+gems: 
+    - jekyll-paginate
+    - jemoji
+
+# number of posts per page
+paginate: 5
+
+# your github username
+github_username: evreichard
+
+# set true to include or false to exclude share option
+share:
+  twitter: false
+  facebook: false
+  google_plus: false
+  linkedin: false
+  disqus: true
+
+linkedin: evanreichard
+
+# if share.facebook is true, provide your facebook app id
+#facebook_app_id: 
+
+# if you have a Twitter account, provide your twitter username (without the @ character) for a better formatted Twitter Card share
+#twitter_username: 
+
+# if share.disqus is true, provide your disqus shortname, the api key and the number of comments to display
+# disqus_username: 
+# disqus_api_key: 
+# disqus_recent_comments_to_display: 5
+
+# google analytics ID
+# google_analytics_id: 
+
+markdown: kramdown
+highlighter: pygments
+exclude: [ 'README.md', 'src/', 'node_modules', 'bower_components', 'package.json', 'bower.json', 'Gruntfile.js' ]
+excerpt_separator: <!--excerpt_separator-->
