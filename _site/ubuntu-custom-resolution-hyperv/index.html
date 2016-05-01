@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Custom Resolution in Ubuntu 13.10 on Microsoft HyperV | Evan Reichard</title>
+  <meta name="description" content="Enable the ability to set a custom resolution in Ubuntu while running on HyperV">
+
+  <meta property="og:title" content="Custom Resolution in Ubuntu 13.10 on Microsoft HyperV | Evan Reichard">
+  <meta property="og:type" content="blog">
+  
+  <meta property="og:url" content="https://www.evanreichard.com//ubuntu-custom-resolution-hyperv/">
+  <meta property="og:description" content="Enable the ability to set a custom resolution in Ubuntu while running on HyperV">
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  
+  <meta name="twitter:title" content="Custom Resolution in Ubuntu 13.10 on Microsoft HyperV | Evan Reichard">
+  <meta name="twitter:description" content="Enable the ability to set a custom resolution in Ubuntu while running on HyperV">
+
+  <link rel="stylesheet" href="/assets/evreichard-1.0.0.css">
+  <link href="//fonts.googleapis.com/css?family=Roboto:400,400italic,500,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Oswald:300" rel="stylesheet" type="text/css">
+  <link rel="canonical" href="https://www.evanreichard.com//ubuntu-custom-resolution-hyperv/">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+
+  <body>
+
+    <header id="site-header">
+
+  <div id="avatar-container">
+
+    <a href="/">
+      <img id="author-picture" src="/assets/images/avatar.jpg" class="img-rounded">
+    </a>
+
+    <p id="author-name">Evan Reichard</p>
+
+    <nav>
+
+      <ul id="nav" class="list-inline hidden-md hidden-lg">
+        <li><a href="/">Posts</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/resume">Résumé</a></li>
+        <li><a href="/webdev">Web Dev</a></li>
+        <hr>
+        <li><a href="//github.com/evreichard" target="_blank">GitHub</a></li>
+        <li><a href="//www.linkedin.com/in/evanreichard" target="_blank">LinkedIn</a></li>
+      </ul>
+
+    </nav>
+    <!-- responsive menu -->
+
+  </div>
+  <!-- avatar -->
+
+  <div id="nav-container" class="visible-md-block visible-lg-block">
+
+        <hr>
+<br>
+    <nav>
+
+      <ul class="list-unstyled">
+        <li><a href="/">Posts</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/resume">Résumé</a></li>
+        <li><a href="/webdev">Web Dev</a></li>
+        <br><hr>
+<br>
+        <li><a href="//github.com/evreichard" target="_blank">GitHub</a></li>
+        <li><a href="//www.linkedin.com/in/evanreichard" target="_blank">LinkedIn</a></li>
+      </ul>
+
+    </nav>
+
+  </div>
+  <!-- menu -->
+</header>
+
+
+    <div id="page-wrap">
+        <div id="page-content">
+            <div id="content">
+                <section id="post">
+
+  <article class="post">
+
+    <h1 class="post-title">
+      <a>Custom Resolution in Ubuntu 13.10 on Microsoft HyperV</a>
+    </h1>
+    <!-- title -->
+
+    <div class="post-meta">
+      <ul class="list-inline">
+        <li>
+            February
+            23,
+            2014
+        </li>
+        <li>
+          
+          <a href="https://www.evanreichard.com//ubuntu-custom-resolution-hyperv//#disqus_thread" data-disqus-identifier="_posts/2014-02-23-ubuntu-custom-resolution-hyperv.markdown"></a>
+          
+        </li>
+      </ul>
+    </div>
+    <!-- meta -->
+
+    <section class="post-content">
+      <p>By default you’re unable to set a custom resolution in Ubuntu 13.10 while running on HyperV.  This is how I set it up.</p>
+
+<p>Modify the following file and make sure that you include the listed modules:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo vim /etc/initramfs-tools/modules</code></pre></figure>
+
+<!--excerpt_separator-->
+
+<p><img src="/assets/images/posts/2014-02-23-hyperv1.png" alt="HyperV1"></p>
+
+<p>Update the initramfs:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo update-initramfs -u</code></pre></figure>
+
+<p>Install the linux-image-extra-virtual package:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install linux-image-extra-virtual</code></pre></figure>
+
+<p>Update the <code>GRUB_CMDLINE_LINUX_DEFAULT</code> line in the GRUB file to reflect your desired screen resolution:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo vim /etc/default/grub</code></pre></figure>
+
+<p><img src="/assets/images/posts/2014-02-23-hyperv2.png" alt="HyperV2"></p>
+
+<p>You can see that I changed from <code>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"</code> to <code>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=hyperv_fb:1920x1080"</code></p>
+
+<p>Update GRUB:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo update-grub</code></pre></figure>
+
+<p>And now reboot and the changes should take effect <img class="emoji" title=":smile:" alt=":smile:" src="https://assets.github.com/images/icons/emoji/unicode/1f604.png" height="20" width="20" align="absmiddle"></p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo reboot</code></pre></figure>
+
+
+    </section>
+    <!-- content -->
+
+    
+    <!-- share -->
+
+    <footer class="post-footer">
+      
+      <div id="disqus_thread"></div>
+      
+    </footer>
+
+  </article>
+
+</section>
+
+
+<script type="text/javascript">
+
+  // Disqus widget
+
+  var disqus_identifier = '_posts/2014-02-23-ubuntu-custom-resolution-hyperv.markdown',
+    disqus_shortname = '',
+    disqus_title = 'Custom Resolution in Ubuntu 13.10 on Microsoft HyperV',
+    disqus_url = 'https://www.evanreichard.com//ubuntu-custom-resolution-hyperv/';
+
+  (function() {
+
+    var dsq = document.createElement('script');
+
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+    ( document.getElementsByTagName('head')[ 0 ] || document.getElementsByTagName('body')[ 0 ] ).appendChild( dsq );
+  })();
+
+</script>
+
+
+            </div>
+            <aside class="visible-lg-block">
+
+                  
+                  <section id="recent-comments-section">
+
+                    <h3>Recent Comments</h3>
+
+                  </section>
+                  <!-- recent comments -->
+                  
+            </aside>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+
+    
+    <script src="/assets/evreichard-1.0.0.js"></script>
+    
+
+    
+    <script type="text/javascript">
+
+        // Disqus count
+
+        var disqus_shortname = '';
+
+        (function() {
+
+          var s = document.createElement('script');
+
+          s.type = 'text/javascript';
+          s.async = true;
+          s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+
+          ( document.getElementsByTagName('HEAD')[ 0 ] || document.getElementsByTagName('BODY')[ 0 ] ).appendChild( s );
+        }());
+
+    </script>
+    
+
+  </body>
+
+</html>

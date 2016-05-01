@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Evan Reichard</title>
+    <description>Sysadmin, Security, Programming</description>
+    <link>https://www.evanreichard.com//</link>
+    <atom:link href="https://www.evanreichard.com//feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 01 May 2016 11:20:12 -0500</pubDate>
+    <lastBuildDate>Sun, 01 May 2016 11:20:12 -0500</lastBuildDate>
+    <generator>Jekyll v3.1.3</generator>
+    
+      <item>
+        <title>Deploying an OVF Template From An Attached Datastore</title>
+        <description>&lt;p&gt;The other day I ran into an issue trying to deploy a OVF from an attached datastore. I needed to do this because I was connected over VPN and didn’t want to upload an OVF over the connection.&lt;/p&gt;
+
+&lt;p&gt;To do this, navigate to &lt;code&gt;https://&amp;lt;your_vsphere_host&amp;gt;/folder&lt;/code&gt; and log in with the root credentials (Same root credentials used to log into the vSphere console):&lt;/p&gt;
+
+&lt;!--excerpt_separator--&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2014-03-10-ovf1.png&quot; alt=&quot;OVF1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Select, &lt;code&gt;ha-datacenter&lt;/code&gt;, and then the datastore where the OVF is located.  Navigate to the OVF file, right click and copy link address.&lt;/p&gt;
+
+&lt;p&gt;Open up the vSphere client, Deploy OVF template, and enter the url into the OVF file location.  When you click next, it will ask for the same credentials you were asked before when accessing the host via your web browser.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2014-03-10-ovf2.png&quot; alt=&quot;OVF2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2014-03-10-ovf3.png&quot; alt=&quot;OVF3&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 10 Mar 2014 00:00:00 -0500</pubDate>
+        <link>https://www.evanreichard.com//deploy-ovf-from-attached-datastore/</link>
+        <guid isPermaLink="true">https://www.evanreichard.com//deploy-ovf-from-attached-datastore/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Custom Resolution in Ubuntu 13.10 on Microsoft HyperV</title>
+        <description>&lt;p&gt;By default you’re unable to set a custom resolution in Ubuntu 13.10 while running on HyperV.  This is how I set it up.&lt;/p&gt;
+
+&lt;p&gt;Modify the following file and make sure that you include the listed modules:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo vim /etc/initramfs-tools/modules&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;!--excerpt_separator--&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2014-02-23-hyperv1.png&quot; alt=&quot;HyperV1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Update the initramfs:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo update-initramfs -u&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Install the linux-image-extra-virtual package:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo apt-get install linux-image-extra-virtual&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Update the &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT&lt;/code&gt; line in the GRUB file to reflect your desired screen resolution:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo vim /etc/default/grub&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2014-02-23-hyperv2.png&quot; alt=&quot;HyperV2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see that I changed from &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;&lt;/code&gt; to &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash video=hyperv_fb:1920x1080&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Update GRUB:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo update-grub&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And now reboot and the changes should take effect :smile:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo reboot&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Sun, 23 Feb 2014 00:00:00 -0600</pubDate>
+        <link>https://www.evanreichard.com//ubuntu-custom-resolution-hyperv/</link>
+        <guid isPermaLink="true">https://www.evanreichard.com//ubuntu-custom-resolution-hyperv/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Windows 8.1 - General Failure While Connected to VPN</title>
+        <description>&lt;p&gt;I just had this issue where I was unable to connect to some publicly accessible hosts while connected to a VPN. I was unable to access a website and upon pinging it, “General Failure” was returned. It didn’t matter whether I checked “Use default gateway on remote network” or not.&lt;/p&gt;
+
+&lt;p&gt;I found the solution was to set the metric to a larger value than everything else. I set it to &lt;code&gt;5000&lt;/code&gt;.&lt;/p&gt;
+
+&lt;!--excerpt_separator--&gt;
+
+&lt;p&gt;You can set the appropriate metric in the following location:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2014-01-17-vpnmetric1.png&quot; alt=&quot;VPNMetric1&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 17 Jan 2014 00:00:00 -0600</pubDate>
+        <link>https://www.evanreichard.com//windows-81-vpn-troubleshoot/</link>
+        <guid isPermaLink="true">https://www.evanreichard.com//windows-81-vpn-troubleshoot/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Right Click MD5 or SHA1 Checksum!?</title>
+        <description>&lt;p&gt;Wouldn’t it be nice to right click on a file and calculate the MD5 or SHA-1 checksum?  That’s what I wanted to do and this is how I did it!&lt;/p&gt;
+
+&lt;p&gt;Download the [Microsoft File Checksum Integrity Verifier (FCIV)][1] and extract to where ever.  It will have a file called &lt;code&gt;fciv.exe&lt;/code&gt; that you should copy to &lt;code&gt;C:\Windows\System32\&lt;/code&gt; (You can alternatively add an additional path parameter to the system environmental variables that points to the directory that contains fciv.exe)&lt;/p&gt;
+
+&lt;!--excerpt_separator--&gt;
+
+&lt;p&gt;Then open &lt;code&gt;regedit&lt;/code&gt; and add the appropriate keys:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-11-10-checksum1.png&quot; alt=&quot;Checksum1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now right click any file and there will be a “Checksum” option that you can select and it will automatically calculate the MD5 and SHA-1 checksum :smile:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-11-10-checksum2.png&quot; alt=&quot;Checksum2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-11-10-checksum3.png&quot; alt=&quot;Checksum3&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 10 Nov 2013 00:00:00 -0600</pubDate>
+        <link>https://www.evanreichard.com//right-click-checksum/</link>
+        <guid isPermaLink="true">https://www.evanreichard.com//right-click-checksum/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>SSH Tunneling to Access Remote Services (ESXi and IPMI)</title>
+        <description>&lt;p&gt;Awhile back I built an ESXi server and because I’m up at school, I have to be able to do 99% of things 400 miles away.  Up until now, I’ve been establishing an SSH session with my router (ASUS RT-N16 running Tomato) and then from there, SSH-ing into my ESXi server where I can execute esxcli commands to power up my VPN server.&lt;/p&gt;
+
+&lt;p&gt;Using SSH tunneling, I’m able to manage the IPMI &amp;amp; KVM web interface as well as use vSphere Client to connect to my ESXi server without using a VPN of any sort.  This is useful if for some reason your VM’s set to auto power on fail, or if you need to manually power on the server.&lt;/p&gt;
+
+&lt;!--excerpt_separator--&gt;
+
+&lt;h1 id=&quot;esxi-vsphere-instructions&quot;&gt;ESXi vSphere Instructions&lt;/h1&gt;
+
+&lt;p&gt;In PuTTY, forward ports &lt;code&gt;443&lt;/code&gt;, &lt;code&gt;902&lt;/code&gt;, and &lt;code&gt;903&lt;/code&gt; to your ESXi’s IP Address (&lt;code&gt;10.0.40.122&lt;/code&gt; in my case) Be sure to add &lt;code&gt;:&amp;lt;port&amp;gt;&lt;/code&gt; to the end of the destination field (E.g. &lt;code&gt;10.0.40.133:903&lt;/code&gt; in the example below)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-10-29-sshforwarding1.png&quot; alt=&quot;SSHForwarding1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the connection and log in.  Ports &lt;code&gt;443&lt;/code&gt;, &lt;code&gt;902&lt;/code&gt; and &lt;code&gt;903&lt;/code&gt; on &lt;code&gt;localhost&lt;/code&gt; will now forward across the SSH connection to their respective ports on the ESXi server (&lt;code&gt;10.0.40.122&lt;/code&gt; in my case)&lt;/p&gt;
+
+&lt;p&gt;At this point you’d think that you can just pop in localhost in the vSphere Client and be good to go.  It should be this way but for some reason the vSphere Client doesn’t want to do it that way.&lt;/p&gt;
+
+&lt;p&gt;To resolve this, you have to open the hosts file and add a name to point to &lt;code&gt;127.0.0.1&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code&gt;%SYSTEMROOT%\System32\drivers\etc\hosts&lt;/code&gt; and perform the following changes (“ESXI” was arbitrarily chosen)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-10-29-sshforwarding2.png&quot; alt=&quot;SSHForwarding2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can now connect to your ESXi server :smile:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-10-29-sshforwarding3.png&quot; alt=&quot;SSHForwarding3&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;ipmi--kvm-web-interface-instructions&quot;&gt;IPMI &amp;amp; KVM Web Interface Instructions&lt;/h1&gt;
+
+&lt;p&gt;As the same as above, in PuTTY, forward ports &lt;code&gt;443&lt;/code&gt;, &lt;code&gt;5900&lt;/code&gt;, and &lt;code&gt;80&lt;/code&gt; to your IMPI NIC’s IP Address (&lt;code&gt;10.0.40.149&lt;/code&gt; in my case)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-10-29-sshforwarding4.png&quot; alt=&quot;SSHForwarding4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And then you’re able to access the web interface :smile:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-10-29-sshforwarding5.png&quot; alt=&quot;SSHForwarding5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There’s also a program called &lt;strong&gt;IPMITool&lt;/strong&gt; from Supermicro which uses port &lt;code&gt;623&lt;/code&gt;.  Unfortunately, this uses UDP as opposed to TCP, which can’t be conventionally tunneled over an SSH tunnel.  It’s possible by creating a UDP -&amp;gt; TCP bridge on the local machine, and then a TCP – &amp;gt; UDP bridge on the remote SSH machine. (Basically encapsulating UDP in TCP then converting it back)  I’ll probably go over this in another post at a later time.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 29 Oct 2013 00:00:00 -0500</pubDate>
+        <link>https://www.evanreichard.com//ssh-tunneling-to-access-remote-services/</link>
+        <guid isPermaLink="true">https://www.evanreichard.com//ssh-tunneling-to-access-remote-services/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Enable Nested Virtualization in ESXi Without the Web Client</title>
+        <description>&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This information is outdated.  There is now a HTML5 Web Client for ESXi standalone. However, there are some bugs so this may still be applicable. &lt;a href=&quot;https://labs.vmware.com/flings/esxi-embedded-host-client&quot;&gt;See here.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So I decided to start studying for the RHCSA/RHCE exam and wanted to set a test lab up.  I currently have an ESXi server that hosts various VM’s for stuff I do back home – I manage it remotely from school.&lt;/p&gt;
+
+&lt;p&gt;With the RHCSA exam, I needed to be able to deploy KVM’s.  This requires Intel’s VMX CPU flag.  The issue is that by default, the VM’s on ESXi will not have VMX capability. There’s something called nested virtualization that became “unofficially” supported in ESXi 5.0, and officially supported in ESXi 5.1+&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, if you run the free version of ESXi, you’re unable to enable nested virtualization as it’s only able to be enabled via the web client as opposed to the C# vSphere client… As far as I know, you’re not able to get the Web Client without vCenter, a paid product.&lt;/p&gt;
+
+&lt;!--excerpt_separator--&gt;
+
+&lt;p&gt;To enable nexsted virtualization manually, you need VM version 8 or 9 (9 is the max you can have before being unable to modify settings in the C# client).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-10-28-virtualization1.png&quot; alt=&quot;Virtualization1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then you need to edit your VM’s &lt;code&gt;.vmx&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-10-28-virtualization2.png&quot; alt=&quot;Virtualization2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And add the following line:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-10-28-virtualization3.png&quot; alt=&quot;Virtualization3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Make sure to backup your previous &lt;code&gt;.vmx&lt;/code&gt; file just in case.  When you upload the modified file, make sure that it has &lt;code&gt;rwxr-xr-x&lt;/code&gt; permissions (chmod 0755)&lt;/p&gt;
+
+&lt;p&gt;Boot up the VM, and check the CPU flags by executing&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cat /proc/cpuinfo&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-10-28-virtualization4.png&quot; alt=&quot;Virtualization4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And there’s the &lt;code&gt;vmx&lt;/code&gt; flag :smile:&lt;/p&gt;
+
+&lt;p&gt;It also appears that unless you have the &lt;code&gt;ept&lt;/code&gt; CPU flag, you’ll only be able to run x86 nested VM’s.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 28 Oct 2013 00:00:00 -0500</pubDate>
+        <link>https://www.evanreichard.com//enable-nested-virtualization-in-esxi-without-web-client/</link>
+        <guid isPermaLink="true">https://www.evanreichard.com//enable-nested-virtualization-in-esxi-without-web-client/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Determining VM’s not protected by any Veeam Backup Job</title>
+        <description>&lt;p&gt;&lt;strong&gt;You can skip to the script below if you’d like, but I recommend setting up a separate user and the following permissions if you plan to run it as a scheduled task.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I needed to create a script that automatically detected any VM’s that were not being backed up on any of the three Veeam Backup and Replication servers we had.  This script reads an exception list where you can list VM names as exceptions so it will not report them as not backed up.&lt;/p&gt;
+
+&lt;p&gt;I specifically created a separate Unprivileged AD user that would run this scheduled task, these are the instructions on how to apply the appropriate permissions.&lt;/p&gt;
+
+&lt;!--excerpt_separator--&gt;
+
+&lt;h1 id=&quot;allow-powershell-remoting-with-a-non-admin-user&quot;&gt;Allow PowerShell Remoting with a Non-Admin User&lt;/h1&gt;
+
+&lt;p&gt;Because this script uses PowerShell remoting, you need to grant execute permissions (Contrary to popular belief, you do not have to be an Administrator in order to PS Remote) On all the Veeam machines (in which we’re going to Remote PS), in an Administrative PowerShell session execute:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;Set-PSSessionConfiguration&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-Name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Microsoft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PowerShell&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-showSecurityDescriptorUI&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Give your Unprivileged User Execute rights.&lt;/p&gt;
+
+&lt;p&gt;We need to now grant the Unprivileged User Execute and Read permissions on the VeeamBackup SQL Database.  In my situation, we were running a MS SQL 2005 DB so these instructions may vary if you have a different setup.&lt;/p&gt;
+
+&lt;h1 id=&quot;setup-remote-access-to-a-sql-server-2005-db&quot;&gt;Setup Remote Access to a SQL Server 2005 DB&lt;/h1&gt;
+
+&lt;p&gt;On all Veeam B&amp;amp;R Machines, go to “SQL Server Config. Manager” -&amp;gt; “SQL Server 2005 Network Config” -&amp;gt; “Protocols for VEEAM”, right click and enable “TCP/IP”&lt;/p&gt;
+
+&lt;p&gt;Restart the SQL Instance Server and start the SQL Browser Service.&lt;/p&gt;
+
+&lt;p&gt;Add these firewall rules (Domain Restricted):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[Port] Open TCP Port 1433&lt;/li&gt;
+  &lt;li&gt;[Program] Permit SQL Server&lt;/li&gt;
+  &lt;li&gt;[Program] Permit SQL Browser&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You should now connect to the SQL Instance with SQL Server Management Studio (SSMS)&lt;/p&gt;
+
+&lt;h1 id=&quot;grant-appropriate-db-permissions-to-the-unprivileged-user&quot;&gt;Grant Appropriate DB Permissions to the Unprivileged User&lt;/h1&gt;
+
+&lt;p&gt;Create an “Execute” role in the “VeeamBackup” DB:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROLE&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;quot;db_execute&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;GRANT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;EXECUTE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;quot;db_execute&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Right click “Logins” under “Security” and select “New Login”&lt;/p&gt;
+
+&lt;p&gt;Add the Unprivileged User and jump to “User Mapping” and select the “VeeamBackup” database. Select the “db_datareader” and “db_execute” (The role we created in the previous step). Save.&lt;/p&gt;
+
+&lt;h1 id=&quot;grant-read-only-permission-in-vcenter-to-the-unprivileged-user&quot;&gt;Grant Read Only Permission in vCenter to the Unprivileged User&lt;/h1&gt;
+
+&lt;p&gt;Connect to your vCenter Server with vSphere, right click your vCenter Server in “Hosts and Clusters” view, select “Add Permission” and grant Read Only permissions to the AD User.&lt;/p&gt;
+
+&lt;p&gt;Now we should be good to go, set up Task Scheduler to run this PowerShell Script as the AD Unprivileged User.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; vSphere PowerCLI has to be installed on the machine that runs this script. (As apparent by the Add-PSSnapIn cmdlet)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/evreichard/Scripts/blob/master/VMVeeamBackupAudit.ps1&quot;&gt;This script on GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Written by Evan Reichard (September 2013)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Add Appropriate PSSnapin&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Add-PSSnapin&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VMware&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VimAutomation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Core&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# vCenter Server&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$vCenterServer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;vCenter&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Appropriate Arrays / Hashtable&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$VeeamMachines&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;veeam1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;veeam2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;veeam3&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$NotProtectedList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@()&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ProtectedList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@()&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ExceptionList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@()&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ExportTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@{}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Email Addresses and SMTP Server&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Sorry, had to get rid of the @ in the email address - WordPress didn&amp;#39;t like it.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$toEmailAddress&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;JDoe(at)example.com&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$fromEmailAddress&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;AuditVMBackup(at)example.com&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$smtpServer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;smtp.example.com&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Exception full file path&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ExceptionFileDir&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;C:\scripts\vmexception.txt&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$OutputFileDir&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;C:\scripts\VMAudit.csv&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Creates ExceptionList array that holds all machines specified in the exception file dir&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Get-Content&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ExceptionFileDir&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Foreach&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;-Object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$ExceptionList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# --------------- Needs Veeam Backup PowerShell Toolkit ---------------&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Cycles through all Veeam Servers in $VeeamMachines&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$VeeamServer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$VeeamMachines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+
+	&lt;span class=&quot;c&quot;&gt;# Remote PS Command&lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$VeeamProtectedList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Invoke-Command&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-ComputerName&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$VeeamServer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-ScriptBlock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nb&quot;&gt;Add-PSSnapin&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VeeamPSSnapIn&lt;/span&gt;
+
+		&lt;span class=&quot;nv&quot;&gt;$VeeamProtectedList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@()&lt;/span&gt;
+
+		&lt;span class=&quot;nv&quot;&gt;$Jobs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Get-VBRJob&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$Job&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$Jobs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;nv&quot;&gt;$VMS&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$Job&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetObjectsInJob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+			&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$VMS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+				&lt;span class=&quot;nv&quot;&gt;$VeeamProtectedList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;
+			&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+		&lt;span class=&quot;nv&quot;&gt;$VeeamProtectedList&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;nv&quot;&gt;$ProtectedList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$VeeamProtectedList&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Sorts the $ProtectedList array for faster comparing between $CompleteList&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ProtectedList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ProtectedList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Sort-Object&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# -------------------------- Needs PowerCLI --------------------------&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Connects to the vCenter server&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Connect-VIServer&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$vCenterServer&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Acquires a list of all the VM&amp;#39;s that are currently powered on in vCenter.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$CompleteList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Get-View&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-ViewType&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;VirtualMachine&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-Property&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-Filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Runtime.PowerState&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;PoweredOn&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Sort-Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Disconnects - We don&amp;#39;t need to be connected anymore. &lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Disconnect-VIServer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-confirm&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$false&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Compares $CompleteList with $ProtectedList and $ExceptionList to create the table&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$CompleteList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ProtectedList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-notcontains&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ExceptionList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-contains&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+			&lt;span class=&quot;nv&quot;&gt;$ExportTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;EXCEPTION&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;nv&quot;&gt;$NotProtectedList&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt;
+			&lt;span class=&quot;nv&quot;&gt;$ExportTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;NOT PROTECTED&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nv&quot;&gt;$ExportTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;PROTECTED&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# NOTE! If the ProtectedList contains VM&amp;#39;s that are not currently powered on, &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# then $NotProtectedList.Count + $ProtectedList.Count will exceed &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# $CompleteList.Count (I had initially thought this was a bug)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Sorts ExportTable&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ExportTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ExportTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetEnumerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Sort-Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Converts to it can easily be exported using Export-CSV&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$CSVTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ExportTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetEnumerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;New-Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PSObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-Property&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(@{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Computer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Status&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Converts so it can easily be converted to HTML&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$HTMLTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$NotProtectedList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetEnumerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;New-Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PSObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-Property&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(@{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Computer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Exports the table to a CSV file&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$CSVTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Export-CSV&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$OutputFileDir&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-NoTypeInformation&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Sends an email if there&amp;#39;s a VM in the $NotProtectedList variable&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$NotProtectedList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-gt&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$emailBody&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HTMLTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ConvertTo-HTML&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Out-String&lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$emailBody&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$emailBody&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-replace&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;th&amp;gt;\*&amp;lt;/th&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;th&amp;gt;Computer&amp;lt;/th&amp;gt;&amp;quot;&lt;/span&gt;
+	&lt;span class=&quot;nv&quot;&gt;$emailBody&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;br/&amp;gt;&amp;lt;p&amp;gt;Exception List: \\$vCenterServer\c$\scripts\vmexception.txt&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;CSV of the whole audit: \\$vCenterServer\c$\scripts\VMAudit.csv&amp;lt;/p&amp;gt;&amp;quot;&lt;/span&gt;
+
+	&lt;span class=&quot;nb&quot;&gt;send-mailmessage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-to&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$toEmailAddress&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-from&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fromEmailAddress&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-subject&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Audit VM Backup - VM(s) are not protected!&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-body&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$emailBody&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-bodyashtml&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-smtpserver&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$smtpServer&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This script will email the VM’s that are not backed up by any Veeam B&amp;amp;R Job on any of the servers within the &lt;code&gt;$VeeamMachines&lt;/code&gt; array to &lt;code&gt;$toEmailAddress&lt;/code&gt; from &lt;code&gt;$fromAddress&lt;/code&gt; via the SMTP server at &lt;code&gt;$smtpServer&lt;/code&gt;. It will also create a full report including exception, protected, and not protected VM’s on the vCenter machine in the &lt;code&gt;C:\scripts\VMAudit.csv&lt;/code&gt; file.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 30 Sep 2013 00:00:00 -0500</pubDate>
+        <link>https://www.evanreichard.com//determining-vms-not-protected-by-any-veeam-backup-job/</link>
+        <guid isPermaLink="true">https://www.evanreichard.com//determining-vms-not-protected-by-any-veeam-backup-job/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>ESXi Server with unRAID</title>
+        <description>&lt;p&gt;Back in 2011 I decided to go ahead and build my first computer.  My first computer that I built was not a desktop, but a server that would run ESXi.  I had planned to run unRAID, a non-standard software RAID solution as one of the VM’s with a SAS RAID Controller in I/O Passthrough.  As well as a few other VM’s as a test lab to learn :smile:&lt;/p&gt;
+
+&lt;p&gt;These are the full specs:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Intel Xeon E3-1230 3.2GHz Quad-Core Processor&lt;/li&gt;
+  &lt;li&gt;SUPERMICRO MBD-X9SCM-F-O LGA1155 Motherboard&lt;/li&gt;
+  &lt;li&gt;2 x Kingston 8GB (2 x 4GB) ECC Unbuffered DDR3 1333 (16GB Total)&lt;/li&gt;
+  &lt;li&gt;SUPERMICRO AOC-SASLP-MV8 PCIe x 4 SAS RAID Controller&lt;/li&gt;
+  &lt;li&gt;NORCO RPC-4220&lt;/li&gt;
+  &lt;li&gt;SeaSonic X Series X-850 850W EPS12V&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It was a pretty easy install with no problems to be honest.  &lt;a href=&quot;http://imgur.com/a/Inr7c#0&quot;&gt;Here&lt;/a&gt; are a few pictures.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 28 Sep 2013 00:00:00 -0500</pubDate>
+        <link>https://www.evanreichard.com//esxi-and-unraid/</link>
+        <guid isPermaLink="true">https://www.evanreichard.com//esxi-and-unraid/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>My Home Network Switch</title>
+        <description>&lt;p&gt;About a year ago we had the ceiling of the basement all open for radiant floor installation – I decided to wire every room in the house (Why not? Everything was open) Yeah it’s not a rack, but I didn’t feel it was necessary to purchase one for a household installation.  Anyway, here’s what it looks like – not too shabby if I say so myself. (I did separate the power cord from the Cat-5e cable.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/2013-09-27-home-network-switch.jpg&quot; alt=&quot;Home Network Switch&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 27 Sep 2013 00:00:00 -0500</pubDate>
+        <link>https://www.evanreichard.com//home-network-switch/</link>
+        <guid isPermaLink="true">https://www.evanreichard.com//home-network-switch/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Convert PowerShell HashTable to CSV File</title>
+        <description>&lt;p&gt;Unfortunately you can’t use the &lt;code&gt;Export-CSV&lt;/code&gt; cmdlet to export a custom &lt;code&gt;HashTable&lt;/code&gt; to a CSV file (Not directly) I found you could convert it to a &lt;code&gt;PSObject&lt;/code&gt; which can be directly piped to &lt;code&gt;Export-CSV&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$OutputTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$MyHashTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getEnumerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;New-Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PSObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-Property&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;[ordered]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;@{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Computer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Time&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;$OutputTable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Export-CSV&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;csv&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;-NoTypeInformation&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Tue, 03 Sep 2013 00:00:00 -0500</pubDate>
+        <link>https://www.evanreichard.com//convert-powershell-hashtable-to-csv-file/</link>
+        <guid isPermaLink="true">https://www.evanreichard.com//convert-powershell-hashtable-to-csv-file/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
