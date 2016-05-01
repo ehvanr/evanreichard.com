@@ -7,12 +7,12 @@
   "url": "https://www.evanreichard.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/evreichard/website.git"
+    "url": "https://github.com/evreichard/evanreichard.com.git"
   },
   "private": true,
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/evreichard/website/issues"
+    "url": "https://github.com/evreichard/evanreichard.com/issues"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
