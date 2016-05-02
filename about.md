@@ -3,7 +3,9 @@ layout: page
 title: About
 permalink: /about/
 ---
-# About
+About
+-----
+---
 
 My name is Evan Reichard. I currently work full time for Verizon in Security and reside in Little Rock, Arkansas.
 
