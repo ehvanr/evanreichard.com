@@ -47,7 +47,7 @@ linkedin: evanreichard
 # disqus_recent_comments_to_display: 5
 
 # google analytics ID
-# google_analytics_id: 
+google_analytics_id: UA-44939622-2
 
 markdown: kramdown
 highlighter: pygments
