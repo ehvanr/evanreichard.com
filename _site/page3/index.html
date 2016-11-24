@@ -102,6 +102,52 @@
   <article class="post">
 
         <h1 class="post-title">
+          <a href="/convert-powershell-hashtable-to-csv-file/">Convert PowerShell HashTable to CSV File</a>
+        </h1>
+        <!-- title -->
+        <div class="post-meta">
+          <ul class="list-inline">
+            <li>
+                September
+                03,
+                2013
+            </li>
+            <li>
+              
+              <a href="https://www.evanreichard.com//convert-powershell-hashtable-to-csv-file//#disqus_thread" data-disqus-identifier="_posts/2013-09-03-convert-powershell-hashtable-to-csv-file.markdown"></a>
+              
+            </li>
+          </ul>
+        </div>
+        <!-- meta -->
+
+        <section class="post-content">
+          <p>Unfortunately you can’t use the <code>Export-CSV</code> cmdlet to export a custom <code>HashTable</code> to a CSV file (Not directly) I found you could convert it to a <code>PSObject</code> which can be directly piped to <code>Export-CSV</code>
+
+<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="nv">$OutputTable</span> <span class="p">=</span> <span class="nv">$MyHashTable</span><span class="p">.</span><span class="n">getEnumerator</span><span class="p">()</span> <span class="p">|</span> <span class="k">foreach</span><span class="p">{</span>
+    <span class="nb">New-Object</span> <span class="n">PSObject</span> <span class="n">-Property</span> <span class="p">(</span><span class="no">[ordered]</span><span class="p">@{</span><span class="n">Computer</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span><span class="n">Time</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Value</span><span class="p">})</span>
+<span class="p">}</span>
+
+<span class="nv">$OutputTable</span> <span class="p">|</span> <span class="nb">Export-CSV</span> <span class="n">test</span><span class="p">.</span><span class="n">csv</span> <span class="n">-NoTypeInformation</span></code></pre></figure>
+
+...</p>
+        </section>
+        <!-- content -->
+
+        <div class="post-reading-link">
+          <a href="/convert-powershell-hashtable-to-csv-file/">Continue reading&nbsp;<i class="fa fa-angle-double-right"></i></a>
+        </div>
+        <!-- reading link -->
+
+  </article>
+  <!--post-->
+
+  <hr><br><br>
+  
+
+  <article class="post">
+
+        <h1 class="post-title">
           <a href="/wrapping-a-python-windows-service-into-an-exe-using-py2exe/">Wrapping a Python Windows Service into an EXE Using py2exe</a>
         </h1>
         <!-- title -->
