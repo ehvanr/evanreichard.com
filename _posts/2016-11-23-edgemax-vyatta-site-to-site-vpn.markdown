@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "EdgeMAX / Vyatta Site to Site VPN"
-description: Instructions on how deploy a site to site VPN between two EdgeRouter Lites
+description: Instructions on how to deploy a site to site VPN between two EdgeRouter Lites
 permalink: /edgemax-vyatta-site-to-site-vpn/
 ---
 
